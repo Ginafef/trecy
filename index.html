@@ -14,14 +14,17 @@
         }
 
         body {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #ffb6dc, #d9a7ff, #a98bff);
-            padding: 20px;
+            body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #ffb6dc, #d9a7ff, #a98bff);
+  padding: 20px 12px;
+}
         }
 
         .carte {
@@ -36,7 +39,24 @@
             box-shadow: 0 15px 45px #7739a744;
             animation: apparition 1.2s ease;
             z-index: 2;
-        }
+             margin: 10px auto 25px;
+  padding: 30px 20px;
+  flex-shrink: 0;
+}
+
+p {
+  overflow-wrap: break-word;
+}
+
+button {
+  max-width: 100%;
+  white-space: normal;
+}
+
+#message {
+  overflow-wrap: anywhere;
+}
+        
 
         .gateau {
             font-size: 75px;
