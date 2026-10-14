@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyeux anniversaire Trecy 💗</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #ffb6dc, #d9a7ff, #a98bff);
+            padding: 20px;
+        }
+
+        .carte {
+            position: relative;
+            max-width: 480px;
+            width: 100%;
+            padding: 40px 25px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.88);
+            border: 2px solid white;
+            border-radius: 30px;
+            box-shadow: 0 15px 45px #7739a744;
+            animation: apparition 1.2s ease;
+            z-index: 2;
+        }
+
+        .gateau {
+            font-size: 75px;
+            animation: flotter 2s infinite ease-in-out;
+        }
+
+        h1 {
+            margin: 15px 0;
+            color: #a83291;
+            font-size: clamp(30px, 8vw, 43px);
+        }
+
+        h2 {
+            color: #8552c9;
+            font-size: 25px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #684568;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .coeur {
+            color: #ee55a5;
+            font-size: 24px;
+            animation: battre 1s infinite;
+            display: inline-block;
+        }
+
+        button {
+            border: none;
+            padding: 14px 25px;
+            border-radius: 30px;
+            background: linear-gradient(90deg, #f36bb5, #a66af5);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 15px #bd65cf55;
+            transition: transform 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.07);
+        }
+
+        #message {
+            display: none;
+            margin-top: 22px;
+            color: #a83291;
+            font-weight: bold;
+            animation: apparition 1s ease;
+        }
+
+        .flottant {
+            position: absolute;
+            bottom: -50px;
+            font-size: 25px;
+            animation: monter 8s linear infinite;
+            opacity: 0.8;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        @keyframes apparition {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes flotter {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        @keyframes battre {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.3);
+            }
+        }
+
+        @keyframes monter {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="carte">
+        <div class="gateau">🎂</div>
+
+        <h1>Joyeux anniversaire !</h1>
+        <h2>Ma chère Trecy 💗</h2>
+
+        <p>
+            Aujourd'hui est un jour spécial, car il célèbre
+            une personne spéciale : TOI ! 🥹💕
+        </p>
+
+        <p>
+            Je te souhaite beaucoup de bonheur, une santé de fer,
+            de la réussite et plein de belles choses dans ta vie.
+            Que cette nouvelle année t'apporte de magnifiques
+            surprises et que tes rêves deviennent réalité.
+        </p>
+
+        <p>
+            Profite pleinement de ta journée et garde toujours
+            ce joli sourire. Tu mérites le meilleur ! 💜
+        </p>
+
+        <div class="coeur">♥ ♥ ♥</div>
+
+        <br><br>
+
+        <button onclick="ouvrirMessage()">
+            Un dernier petit mot 💌
+        </button>
+
+        <div id="message">
+            Joyeux anniversaire Trecy ! 🥳💕
+            <br>
+            Que ta vie soit aussi belle que ton cœur.
+            Gros bisous ! 💋💗
+        </div>
+    </div>
+
+    <script>
+        function ouvrirMessage() {
+            const message = document.getElementById("message");
+
+            if (message.style.display === "block") {
+                message.style.display = "none";
+            } else {
+                message.style.display = "block";
+            }
+
+            for (let i = 0; i < 20; i++) {
+                const coeur = document.createElement("div");
+                coeur.className = "flottant";
+                coeur.textContent = ["💗", "💜", "💕", "✨", "🎉"][
+                    Math.floor(Math.random() * 5)
+                ];
+
+                coeur.style.left = Math.random() * 100 + "vw";
+                coeur.style.animationDuration = (3 + Math.random() * 4) + "s";
+
+                document.body.appendChild(coeur);
+
+                setTimeout(() => coeur.remove(), 8000);
+            }
+        }
+
+        // Cœurs qui flottent en permanence
+        setInterval(() => {
+            const coeur = document.createElement("div");
+            coeur.className = "flottant";
+            coeur.textContent = Math.random() > 0.5 ? "💗" : "💜";
+            coeur.style.left = Math.random() * 100 + "vw";
+            coeur.style.animationDuration = (5 + Math.random() * 4) + "s";
+
+            document.body.appendChild(coeur);
+
+            setTimeout(() => coeur.remove(), 9000);
+        }, 600);
+    </script>
+
+</body>
+
+</html>
